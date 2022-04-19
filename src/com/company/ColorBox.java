@@ -1,11 +1,17 @@
 package com.company;
 
-public class ColorBox extends Box{
+public class ColorBox extends Box {
     private int colour;
 
+    public ColorBox(){
 
-    public ColorBox(int width, int length, int height, int colour, int material){
+    }
+
+    public ColorBox(int width, int length, int height, int colour, int material) {
         super(width, length, height, material);
+        if(colour <= 0 || colour > 5){
+            throw new IllegalArgumentException("Вы ввели не правильное значение: ");
+        }
         this.colour = colour;
     }
 
@@ -13,12 +19,11 @@ public class ColorBox extends Box{
         return colour;
     }
 
-    public void setColour(int colour) {
+    public void setColour() {
         this.colour = colour;
     }
 
-
-    public enum Colour{
+    public enum Colour {
         RED("красный"),
         BLUE("голубой"),
         WHITE("белый"),
@@ -32,18 +37,23 @@ public class ColorBox extends Box{
         }
     }
 
-    public static Colour getColour(int i){
-        switch (i){
-            case 1: return Colour.RED;
-            case 2: return Colour.BLUE;
-            case 3: return Colour.WHITE;
-            case 4: return Colour.BLACK;
-            case 5: return Colour.BROWN;
+    public static Colour getColour(int i) {
+        switch (i) {
+            case 1:
+                return Colour.RED;
+            case 2:
+                return Colour.BLUE;
+            case 3:
+                return Colour.WHITE;
+            case 4:
+                return Colour.BLACK;
+            case 5:
+                return Colour.BROWN;
         }
         return Colour.RED;
     }
 
-    public enum Material{
+    public enum Material {
         WOOD("дерево"),
         IRON("железо"),
         PLASTIC("пластик"),
@@ -61,14 +71,28 @@ public class ColorBox extends Box{
         }
     }
 
-    public static Material getMaterial(int j){
+    public static Material getMaterial(int j) {
         switch (j) {
-            case 1: return Material.WOOD;
-            case 2: return Material.IRON;
-            case 3: return Material.PLASTIC;
-            case 4: return Material.CARDBOARD;
-            case 5: return Material.COPPER;
+            case 1:
+                return Material.WOOD;
+            case 2:
+                return Material.IRON;
+            case 3:
+                return Material.PLASTIC;
+            case 4:
+                return Material.CARDBOARD;
+            case 5:
+                return Material.COPPER;
         }
         return Material.WOOD;
+    }
+
+
+    @Override
+    public String toString() {
+        return "ColorBox{" +
+                super.toString() +
+                " colour = " + colour +
+                '}';
     }
 }

@@ -1,20 +1,31 @@
 package com.company;
 
-public class Box {
-    private int width;
-    private int length;
-    private int height;
-    private int  material;
 
+public class Box {
+    private int width = 0;
+    private int length = 0;
+    private int height = 0;
+    private int  material = 0;
+
+   public Box(){
+
+   }
     public Box(int width, int length, int height) {
-        this.width = width;
-        this.length = length;
-        this.height = height;
+       if(width <=0 || length <=0 || height <=0){
+            throw new IllegalArgumentException("Вы ввели не правильное значение: ");
+
+       }
+           this.width = width;
+           this.length = length;
+           this.height = height;
     }
 
     public Box(int width, int length, int height, int material) {
-        this(width,length,height);
-        this.material = material;
+       this(width,length,height);
+       if(material<=0 || material>5){
+            throw new IllegalArgumentException("Вы ввели не правильное значение: ");
+        }
+       this.material = material;
     }
 
     double getVolume(){
@@ -67,6 +78,18 @@ public class Box {
 
     public int getMaterial() {
         return material;
+    }
+
+
+    public String toString(){
+        StringBuilder result = new StringBuilder();
+
+        result.append(" Box{").append("width =").append(width).append(", ").
+                append("length = ").append(length).append(", ").
+                append("height = ").append(height).append(", ").
+                append("material = ").append(material).append("}");
+
+        return result.toString();
     }
 
 }

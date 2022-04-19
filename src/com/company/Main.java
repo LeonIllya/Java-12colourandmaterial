@@ -5,25 +5,62 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Box object1 = new Box(1,2,3,4);
 
-        System.out.println("Обьем 1 коробки: " +object1.getVolume());
-        object1.setWidth(-6);
-        object1.setLength(8);
-        object1.setHeight(5);
-        System.out.println("\n\tШирина фигуры: " +object1.getWidth());
-        System.out.println("\tДлина фигуры: " +object1.getLength());
-        System.out.println("\tВысота фигуры: " +object1.getHeight());
+        try {
+            Box object1 = new Box(1, 2, 3, 1);
+            Warehouse w1 = new Warehouse(1);
+            w1.addBox(object1);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("\nОбьем 1 коробки: " +object1.getVolume());
+        try {
+            Box object2 = new Box(-1, 2, 3, 2);
+            Warehouse w1 = new Warehouse(4);
+            w1.addBox(object2);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
-        ColorBox colorBox = new ColorBox(1,2,3,2,5);
+        try {
+            Box object3 = new Box(9,10,11,-2);
+            Warehouse w1 = new Warehouse();
+            w1.addBox(object3);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("" +colorBox.getVolume());
+        try {
+            Box object4 = new Box(5,6,7);
+            Warehouse w1 = new Warehouse();
+            w1.addBox(object4);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("" +colorBox.getColour(2));
+        try {
+            Box object5 = new Box(3,-7,6);
+            Warehouse w1 = new Warehouse();
+            w1.addBox(object5);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
-        System.out.println("" +colorBox.getMaterial(5));
+        try {
+            ColorBox colorBox = new ColorBox(1,2,3,2,5);
+            Warehouse w1 = new Warehouse();
+            w1.addBox(colorBox);
+            System.out.println("\n" +w1.toString());
+        } catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
 
+        Box box = new Box(6,7,8);
+        System.out.println("\n" +box.toString());
     }
 }
